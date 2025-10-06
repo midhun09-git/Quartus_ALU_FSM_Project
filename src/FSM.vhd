@@ -1,0 +1,84 @@
+Library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+
+entity FSM is
+port 
+(clock ,reset : IN STD_LOGIC;
+State_Out : OUT STD_LOGIC_VECTOR(2 Downto 0);
+start ,accumulate : IN STD_LOGIC;
+WR_A ,WR_B ,WR_C ,SEL : OUT STD_LOGIC
+);
+end FSM;
+
+
+Architecture behavioral of FSM is
+
+type State is (init ,fetch ,proc ,write_ot ,acc);
+signal current_state, next_state : State;
+begin
+
+
+process(clock ,reset)
+begin 
+if (reset='1') then
+current_state <= init;
+elsif (falling_edge(clock)) then
+current_state <= next_state;
+end if;
+end process;
+
+
+process(start ,accumulate)
+begin
+case(current_state) is
+
+
+when init => --State_Out=000
+State_Out <= "000";
+WR_A <= '0';
+WR_B <= '0';
+WR_C <= '0';
+SEL <= '0';
+
+if (start = '1' and accumulate = '0') then
+next_state <= fetch;
+elsif (start = '1' and accumulate = '1') then
+next_state <= acc;
+end if;
+
+when fetch => --State_Out=001
+State_Out <= "001";
+WR_A <= '1';
+WR_B <= '1';
+WR_C <= '0';
+SEL <= '0';
+next_state <= proc;
+
+when acc => --State_Out=010
+State_Out <= "010";
+WR_A <= '0';
+WR_B <= '0';
+WR_C <= '1';
+SEL <= '1';
+next_state <= proc;
+
+when proc => --State_Out=011
+State_Out <= "011";
+WR_A <= '0';
+WR_B <= '0';
+next_state <= write_ot;
+
+when write_ot => --State_Out=100
+State_Out <= "100";
+WR_A <= '0';
+WR_B <= '0';
+WR_C <= '1';
+SEL <= '0';
+next_state <= init;
+
+end case;
+end process;
+end behavioral;
+
+
