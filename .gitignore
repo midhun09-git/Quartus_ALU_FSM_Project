@@ -1,0 +1,81 @@
+# ======================================================
+# Git Ignore File for Quartus Prime / VHDL Projects
+# ------------------------------------------------------
+# This file excludes all generated, temporary, and project-specific
+# user files to keep the repository clean and source-controlled.
+# ======================================================
+
+# ===========================
+# 1. Quartus-Generated Directories
+# ===========================
+/output_files/
+/db/
+/incremental_db/
+/simulation/
+
+# ===========================
+# 2. Quartus Project Management / Cache Files
+# ===========================
+*.qws        # Quartus Workspace Settings
+*.qcc        # Quartus Cache File
+*.qch        # Quartus Help Index File
+*.qxp        # Quartus Partitions File
+*.bak        # General Backup Files
+*.qar        # Quartus Archive File
+*.qarlog     # Quartus Archive Log
+*.ddb        # Database Files
+*.sld        # SignalTap Logic Analyzer Files
+
+# ===========================
+# 3. Generated Synthesis / Report Files
+# ===========================
+*.rpt        # Report Files (Fitter, TimeQuest, etc.)
+*.cmp        # Comparator File
+*.eqn        # Equations File
+*.log        # Log Files
+*.map        # Map Report File
+*.ocp        # Pin Planner Assignment File
+*.sta        # Static Timing Analysis File
+*.srr        # Synthesis Report File
+*.summary    # Summary Report File
+*.qdf        # Design File Backup
+
+# ===========================
+# 4. Programmer and Device Files
+# ===========================
+*.sof        # SRAM Object File
+*.pof        # Programmer Object File
+*.jic        # JTAG Indirect Configuration File
+*.jam        # JTAG Script File
+*.hex        # Intel HEX File
+*.rbf        # Raw Binary File
+
+# ===========================
+# 5. Simulation / Waveform Files (Optional)
+# ===========================
+*.vcd        # Value Change Dump File
+*.vwf        # Vector Waveform File
+*.asdb       # Simulation Database File
+*.asdo       # Simulation Output File
+*.wlf        # ModelSim Waveform Log
+
+# ===========================
+# 6. General Temporary / Editor Files
+# ===========================
+*~
+*.tmp
+*.swp
+*.bak
+*.log
+*.old
+.DS_Store
+Thumbs.db
+
+# ===========================
+# 7. User / OS / IDE Files
+# ===========================
+*.user
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
